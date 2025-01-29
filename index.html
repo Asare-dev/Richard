@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Richard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Supherhero">
+    <meta name="keywords" content="programming hero,learn programming">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
+    
+
+    <!--custom css-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+    <h3></h3>
+
+    
+
+</div>
+
+
+
+
+
+<!--main js-->
+<script src="js/main.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richard Asare Suits</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('Emerald_Luxury.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+        }
+        .container {
+            width: 350px;
+            padding: 30px;
+            margin: 100px auto;
+            background: rgba(0, 0, 50, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.8);
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #FFD700;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .suit-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .suit {
+            border: 3px solid #FFD700;
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+            background: rgba(0, 0, 50, 0.9);
+            border-radius: 15px;
+        }
+        .suit img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .cart {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .cart button {
+            background: #FFD700;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="container">
+        <h2> Richard Asare Suits</h2>
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Suits Catalog (Hidden initially) -->
+    <div id="suitsPage" style="display: none;">
+        <h1>Welcome to Richard Asare Suits</h1>
+        <h2>Our Exclusive Collection</h2>
+        <div class="suit-container">
+            <div class="suit">
+                <img src="Royal_Blue.jpg" alt="Royal Blue Suit">
+                <p><b>Royal Blue Suit</b></p>
+                <p>Price: GHS 1800</p>
+                <p>A luxurious blue suit for special occasions.</p>
+                <button onclick="addToCart(1800, 'Royal Blue')">Add to Cart</button>
+            </div>
+            <div class="suit">
+                <img src="Classic_Black.jpg" alt="Classic Black Suit">
+                <p><b>Classic Black Suit</b></p>
+                <p>Price: GHS 1500</p>
+                <p>A timeless black suit for all formal events.</p>
+                <button onclick="addToCart(1500, 'Classic Black')">Add to Cart</button>
+            </div>
+            <div class="suit">
+                <img src="Golden_Elegance.jpeg" alt="Golden Elegance Suit">
+                <p><b>Golden Elegance Suit</b></p>
+                <p>Price: GHS 2500</p>
+                <p>A gold-trimmed suit for an expensive look.</p>
+                <button onclick="addToCart(2500, 'Golden Elegance')">Add to Cart</button>
+            </div>
+            <div class="suit">
+                <img src="Velvet_Wine.jpg" alt="Velvet Wine Suit">
+                <p><b>Velvet Wine Suit</b></p>
+                <p>Price: GHS 2000</p>
+                <p>A deep wine-colored velvet suit for elegance.</p>
+                <button onclick="addToCart(2000, 'Velvet Wine')">Add to Cart</button>
+            </div>
+            <div class="suit">
+                <img src="Silver_Storm.jpg" alt="Silver Storm Suit">
+                <p><b>Silver Storm Suit</b></p>
+                <p>Price: GHS 2300</p>
+                <p>Shiny silver suit that stands out in any event.</p>
+                <button onclick="addToCart(2300, 'Silver Storm')">Add to Cart</button>
+            </div>
+            <div class="suit">
+                <img src="Emerald_Luxury.jpg" alt="Emerald Luxury Suit">
+                <p><b>Emerald Luxury Suit</b></p>
+                <p>Price: GHS 2200</p>
+                <p>Emerald green suit for a royal presence.</p>
+                <button onclick="addToCart(2200, 'Emerald Luxury')">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="cart">
+            <p>Total Price: GHS <span id="totalPrice">0</span></p>
+            <button onclick="order()">Order Now</button>
+        </div>
+    </div>
+
+    <script>
+        let totalPrice = 0;
+        let username = "";
+
+        function login() {
+            username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if (password === "Asareba1") {
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("suitsPage").style.display = "block";
+            } else {
+                alert("Incorrect password! Try again.");
+            }
+        }
+
+        function addToCart(price, suitName) {
+            totalPrice += price;
+            document.getElementById("totalPrice").textContent = totalPrice;
+            alert(suitName + " added to cart!");
+        }
+
+        function order() {
+            alert(`Thank you ${username} for ordering your perfect suits at Richard Asare Suits. Contact Richard on 0243081341 to claim your order.`);
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
